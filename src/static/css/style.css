@@ -107,6 +107,13 @@ a {
 .fav__label {
     cursor: pointer;
 }
+.fav__label:after {
+    content: "♠️";
+    font-family: initial;
+}
+.fav__input:checked ~ .fav__label:after {
+    content: "❤️";
+}
 
 header {
     background: var(--evalblack);

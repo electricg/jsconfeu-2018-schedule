@@ -7,9 +7,7 @@ const Fav = ({ id, day, time }) => {
                 name={`fav-${day}-${time}`}
                 className="fav__input"
             />
-            <label htmlFor={`fav-${id}`} className="fav__label">
-                ❤️
-            </label>
+            <label htmlFor={`fav-${id}`} className="fav__label" />
         </div>
     );
 };

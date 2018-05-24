@@ -1,7 +1,8 @@
 import Document, { Main } from 'next/document';
 import Head from './_head';
 
-import css from 'raw-loader!../src/css/style.css';
+import css from 'raw-loader!../src/static/css/style.css';
+import js from 'raw-loader!../src/static/js/script.js';
 
 class MyDocument extends Document {
     render() {
@@ -26,6 +27,7 @@ class MyDocument extends Document {
                 </Head>
                 <body>
                     <Main />
+                    <script dangerouslySetInnerHTML={{ __html: js }} />
                 </body>
             </html>
         );
