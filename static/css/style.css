@@ -1,0 +1,127 @@
+:root {
+    --callbackpink: #e10079;
+    --evalblack: #303f62;
+    --returnrose: #ffc4bc;
+    --getdaycloud: #dde4f2;
+    --promiselinen: #f3ecda;
+    --communitycolor: #bcffc4;
+
+    --text-color: var(--promiselinen);
+
+    --vertical-margin: 0.5em;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: var(--evalblack);
+    color: #bbbbbb;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: normal;
+    font-size: 1em;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0 0 var(--vertical-margin) 0;
+    text-align: center;
+}
+
+a {
+    color: var(--callbackpink);
+    text-decoration: none;
+}
+
+.slot {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.slot__title {
+    background: var(--promiselinen);
+    color: var(--evalblack);
+    margin-bottom: var(--vertical-margin);
+    text-align: center;
+    width: 100%;
+}
+
+.session {
+    --primary-color: var(--returnrose);
+    --text-color: var(--promiselinen);
+    --invert-text-color: var(--evalblack);
+
+    color: var(--text-color);
+    flex: 1 1 50%;
+    margin-bottom: calc(var(--vertical-margin) * 2);
+    padding: 0 var(--vertical-margin);
+}
+
+.session.sidetrack {
+    --primary-color: var(--getdaycloud);
+}
+
+.session.community {
+    --primary-color: var(--communitycolor);
+}
+
+.track {
+    color: var(--primary-color);
+}
+
+.speaker {
+    color: var(--primary-color);
+}
+
+.description {
+    font-size: 0.8em;
+    margin-top: var(--vertical-margin);
+}
+.description p {
+    margin: 0 0 var(--vertical-margin) 0;
+}
+
+.fav__input {
+    display: none;
+}
+
+.fav__label {
+    cursor: pointer;
+}
+
+header {
+    background: var(--evalblack);
+    padding: 4px 0;
+    position: sticky;
+    text-align: center;
+    top: -1px;
+}
+
+header a {
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: calc(var(--vertical-margin) / 2) var(--vertical-margin);
+}
+
+header a.active {
+    background: var(--promiselinen);
+}

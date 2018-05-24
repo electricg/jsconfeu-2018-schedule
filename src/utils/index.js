@@ -1,0 +1,75 @@
+import cheerio from 'cheerio';
+
+const parseData = html => {
+    const data = {};
+    const $ = cheerio.load(html);
+
+    const $sessions = $('li.session');
+
+    $sessions.each((i, el) => {
+        const $el = $(el);
+
+        const id = $el.attr('id');
+
+        const datetime = $el.attr('datetime');
+        const datetimeArr = datetime.split(' ');
+        const [day, time] = datetimeArr;
+
+        const who = $el
+            .find('.speaker')
+            .text()
+            .trim();
+
+        const what = $el
+            .find('h3')
+            .text()
+            .replace(who, '')
+            .trim();
+
+        const trackName = $el
+            .find('.track')
+            .text()
+            .trim();
+        const trackId = $el
+            .attr('class')
+            .replace('session', '')
+            .trim();
+
+        const $description = $el.find('.description');
+        const link = $description.find('a');
+        const href = link.attr('href');
+        link
+            .attr('target', '_blank')
+            .attr('rel', 'noopener')
+            .attr('href', `https://2018.jsconf.eu${href}`);
+        const description = $description.html();
+
+        const details = {
+            id,
+            datetime,
+            day,
+            time,
+            who,
+            what,
+            trackId,
+            trackName,
+            description
+        };
+
+        if (!data[day]) {
+            data[day] = {};
+        }
+
+        if (!data[day][time]) {
+            data[day][time] = {};
+        }
+
+        data[day][time][trackId] = details;
+    });
+
+    // console.log(data);
+
+    return data;
+};
+
+export { parseData };
