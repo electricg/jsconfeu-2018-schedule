@@ -1,6 +1,8 @@
 import Document, { Main } from 'next/document';
 import Head from './_head';
 
+import css from 'raw-loader!../src/css/style.css';
+
 class MyDocument extends Document {
     render() {
         return (
@@ -20,7 +22,7 @@ class MyDocument extends Document {
 
                     <title>JSConf EU 2018 Schedule</title>
 
-                    <link rel="stylesheet" href="/static/css/style.css" />
+                    <style dangerouslySetInnerHTML={{ __html: css }} />
                 </Head>
                 <body>
                     <Main />
