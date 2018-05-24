@@ -1,4 +1,5 @@
-import Document, { Main, Head, NextScript } from 'next/document';
+import Document, { Main } from 'next/document';
+import Head from './_head';
 
 class MyDocument extends Document {
     render() {
@@ -23,7 +24,6 @@ class MyDocument extends Document {
                 </Head>
                 <body>
                     <Main />
-                    <NextScript />
                 </body>
             </html>
         );
