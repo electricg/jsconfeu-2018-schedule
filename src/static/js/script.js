@@ -1,3 +1,4 @@
+//=== Save fav sessions
 (function() {
     const namespace = 'jsconfeu-2018-schedule';
     const inputs = [...document.querySelectorAll('input[type=radio]')];
@@ -87,5 +88,102 @@
         setSelected([]);
     };
 
-    window.onload = onPageLoad;
+    window.addEventListener('load', onPageLoad);
+})();
+
+//=== Scroll to session
+(function() {
+    /**
+     * Find current slot in relation to a given date
+     * @param {string|Date} date
+     * @returns {HTMLElement}
+     */
+    const getCurrentSlot = date => {
+        const confYear = 2018;
+        const confMonth = 5;
+        const confDay1 = 2;
+        const confDay2 = 3;
+
+        const today = typeof date === 'string' ? new Date(date) : date;
+        const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth();
+        const todayDay = today.getDate();
+
+        let isConfDay = false;
+
+        if (
+            confYear === todayYear &&
+            confMonth === todayMonth &&
+            (confDay1 === todayDay || confDay2 === todayDay)
+        ) {
+            isConfDay = true;
+        }
+
+        if (!isConfDay) {
+            return false;
+        }
+
+        const fiveMinutes = 5 * 1000 * 60;
+        const slots = [...document.querySelectorAll('.slot')];
+
+        // Loop through the slots, the first with a starting time earlier
+        // than now is the current one.
+        // Set the starting time 5 minutes earlier to consider the break
+        // between each slot
+        const next = slots.reduce((acc, slot) => {
+            if (
+                Date.parse(slot.getAttribute('datetime')) - fiveMinutes <
+                today
+            ) {
+                acc = slot;
+            }
+
+            return acc;
+        }, false);
+
+        return next;
+    };
+
+    /**
+     * Scroll to given element
+     * @param {HTMLElement} el Element to scroll to
+     */
+    const scrollToElement = el => {
+        if (el) {
+            el.scrollIntoView(true);
+        }
+    };
+
+    /**
+     * Scroll to slot
+     */
+    const scrollToSlot = () => {
+        // const date = '2018-06-03 13:56 GMT+0200';
+        const date = new Date();
+        // scroll only if we don't have an hashtag in the url
+        if (!window.location.hash) {
+            // header height including border and padding
+            const headerHeight = document.querySelector('header').offsetHeight;
+
+            const slot = getCurrentSlot(date);
+
+            if (slot) {
+                scrollToElement(slot);
+
+                // now account for fixed header
+                const scrolledY = window.scrollY;
+
+                // add 1px for rounding
+                if (scrolledY) {
+                    window.scroll(0, scrolledY - headerHeight - 1);
+                }
+            }
+        }
+    };
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            scrollToSlot();
+        }, 0);
+    });
 })();

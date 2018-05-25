@@ -5,7 +5,11 @@ const Slot = ({ day, time, data }) => {
     const multiple = trackIds.indexOf('sidetrack') !== -1;
 
     return (
-        <section id={`slot-${day}-${time}`} className="slot">
+        <section
+            id={`slot-${day}-${time}`}
+            dateTime={`${day} ${time} GMT+0200`}
+            className="slot"
+        >
             <h2 className="slot__title">{time}</h2>
             {trackIds.map(trackId => (
                 <Session
