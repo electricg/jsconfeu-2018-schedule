@@ -21,6 +21,8 @@ class MyDocument extends Document {
                     />
                     <meta name="robots" content="noindex,nofollow" />
 
+                    <link rel="manifest" href="/static/manifest.json" />
+
                     <title>JSConf EU 2018 Schedule</title>
 
                     <style dangerouslySetInnerHTML={{ __html: css }} />
