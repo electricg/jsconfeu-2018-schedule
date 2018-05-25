@@ -12,6 +12,12 @@ const Nav = ({ days, active }) => {
                     </a>
                 ))}
             </nav>
+            <input
+                type="button"
+                name="clear-fav"
+                className="fav-clear"
+                value="clear"
+            />
         </header>
     );
 };

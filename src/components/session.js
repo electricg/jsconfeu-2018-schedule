@@ -1,4 +1,6 @@
-import Fav from './fav';
+import { Fragment } from 'react';
+
+import { FavInput, FavLabel } from './fav';
 
 const Session = ({ data, multiple }) => {
     const {
@@ -13,18 +15,26 @@ const Session = ({ data, multiple }) => {
         description
     } = data;
     return (
-        <section id={id} className={`session ${trackId}`} dateTime={datetime}>
-            {!!multiple && <Fav id={id} day={day} time={time} />}
-            <div className="track">{trackName}</div>
-            <h3>{what}</h3>
-            {who !== 'all' && <div className="speaker">{who}</div>}
-            {!!description && (
-                <div
-                    className="description"
-                    dangerouslySetInnerHTML={{ __html: `${description}` }}
-                />
-            )}
-        </section>
+        <Fragment>
+            <FavInput id={id} day={day} time={time} show={multiple} />
+            <section
+                id={id}
+                className={`session ${trackId}`}
+                dateTime={datetime}
+            >
+                <div className="track">
+                    {trackName} <FavLabel id={id} show={multiple} />
+                </div>
+                <h3>{what}</h3>
+                {who !== 'all' && <div className="speaker">{who}</div>}
+                {!!description && (
+                    <div
+                        className="description"
+                        dangerouslySetInnerHTML={{ __html: `${description}` }}
+                    />
+                )}
+            </section>
+        </Fragment>
     );
 };
 

@@ -111,8 +111,16 @@ a {
     content: "♠️";
     font-family: initial;
 }
-.fav__input:checked ~ .fav__label:after {
+.fav__input:checked + .session .fav__label:after {
     content: "❤️";
+}
+
+.fav-clear {
+    border: 0 none;
+    cursor: pointer;
+    position: absolute;
+    right: 4px;
+    top: 4px;
 }
 
 header {
