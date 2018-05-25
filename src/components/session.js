@@ -28,9 +28,11 @@ const Session = ({ data, multiple }) => {
                 <h3>{what}</h3>
                 {who !== 'all' && <div className="speaker">{who}</div>}
                 {!!description && (
-                    <div
+                    <details
                         className="description"
-                        dangerouslySetInnerHTML={{ __html: `${description}` }}
+                        dangerouslySetInnerHTML={{
+                            __html: `<summary>description</summary>${description}`
+                        }}
                     />
                 )}
             </section>

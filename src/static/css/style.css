@@ -96,6 +96,15 @@ a {
     font-size: 0.8em;
     margin-top: var(--vertical-margin);
 }
+
+.description summary {
+    cursor: pointer;
+}
+
+.description summary:focus {
+    outline: 0 none;
+}
+
 .description p {
     margin: 0 0 var(--vertical-margin) 0;
 }
