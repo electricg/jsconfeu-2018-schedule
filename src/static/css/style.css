@@ -145,6 +145,7 @@ header {
     position: sticky;
     text-align: center;
     top: -1px;
+    z-index: 1;
 }
 
 header a {
