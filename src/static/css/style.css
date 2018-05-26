@@ -181,3 +181,31 @@ header a {
 header a.active {
     background: var(--promiselinen);
 }
+
+/* test */
+
+/* section#day-2018-06-03 {
+    position: relative;
+}
+
+section#day-2018-06-02:after {
+    background: var(--evalblack);
+    content: "";
+    display: block;
+    height: 42px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+
+.version,
+.now {
+    z-index: 3;
+}
+
+header a {
+    color: var(--evalblack);
+}
+header a.active {
+    color: var(--promiselinen);
+} */
