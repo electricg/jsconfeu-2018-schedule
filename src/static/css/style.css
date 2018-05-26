@@ -55,6 +55,7 @@ a {
 .slot {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .slot__title {
@@ -120,8 +121,14 @@ a {
     content: "♠️";
     font-family: initial;
 }
-.fav__input:checked + .session .fav__label:after {
+.fav__input:checked + .fav__input + .session .fav__label:after,
+.fav__input + .fav__input:checked + .session + .session .fav__label:after {
     content: "❤️";
+}
+
+.fav__input + .fav__input:checked + .session,
+.fav__input:checked + .fav__input + .session + .session {
+    opacity: 0.5;
 }
 
 .fav-clear {

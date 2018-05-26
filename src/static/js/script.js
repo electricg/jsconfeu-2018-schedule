@@ -86,9 +86,16 @@
     /**
      * To run when clear button is clicked
      */
-    const onClearClick = () => {
-        saveSelected([]);
-        setSelected([]);
+    const onClearClick = e => {
+        const el = e.target;
+        const name = el.getAttribute('data-slot');
+        const radios = [...document.querySelectorAll(`input[name='${name}']`)];
+
+        radios.forEach(radio => {
+            radio.checked = false;
+        });
+
+        onRadioChange();
     };
 
     window.addEventListener('load', onPageLoad);

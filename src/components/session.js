@@ -1,12 +1,11 @@
 import { Fragment } from 'react';
 
-import { FavInput, FavLabel } from './fav';
+import { FavLabel } from './fav';
 
 const Session = ({ data, multiple }) => {
-    const { id, day, time, who, what, trackId, trackName, description } = data;
+    const { id, who, what, trackId, trackName, description } = data;
     return (
         <Fragment>
-            <FavInput id={id} day={day} time={time} show={multiple} />
             <section id={id} className={`session ${trackId}`}>
                 <div className="track">
                     {trackName} <FavLabel id={id} show={multiple} />
