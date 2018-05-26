@@ -52,6 +52,13 @@ a {
     text-decoration: none;
 }
 
+.version {
+    font-size: 0.8em;
+    padding-left: 2px;
+    position: fixed;
+    z-index: 2;
+}
+
 .slot {
     display: flex;
     flex-wrap: wrap;

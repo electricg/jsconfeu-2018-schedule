@@ -2,6 +2,8 @@ import Document from 'next/document';
 import Head from './_head';
 import Main from './_main';
 
+import { version } from '../package.json';
+
 import css from 'raw-loader!../src/static/css/style.css';
 // Enforce that only the loader in the import statement is used by prefixing it with a !
 import js from '!raw-loader!../src/static/js/script.js';
@@ -29,6 +31,7 @@ class MyDocument extends Document {
                     <style dangerouslySetInnerHTML={{ __html: css }} />
                 </Head>
                 <body>
+                    <span className="version">v{version}</span>
                     <Main />
                     <script dangerouslySetInnerHTML={{ __html: js }} />
                 </body>
