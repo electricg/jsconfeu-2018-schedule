@@ -8,7 +8,7 @@
     "dev": "node server-dev.js",
     "build": "next build",
     "start": "next start",
-    "static": "rm -rf out && next build && next export && rm -rf out/_next && cp src/static/js/sw.js out/ && node server-static.js"
+    "static": "rm -rf out && NODE_ENV=production next build && next export && rm -rf out/_next && cp src/static/js/sw.js out/ && node server-static.js"
   },
   "author": "Giulia Alfonsi",
   "license": "MIT",

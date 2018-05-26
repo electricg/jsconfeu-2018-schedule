@@ -5,10 +5,14 @@ import { parseData } from '../src/utils';
 
 import Schedule from '../src/components/schedule';
 
+const url =
+    process.env.NODE_ENV === 'production'
+        ? 'https://2018.jsconf.eu/schedule/'
+        : 'http://localhost:3000/schedule/';
+
 class PageIndex extends Component {
     static async getInitialProps() {
-        // const html = await axios.get('https://2018.jsconf.eu/schedule/');
-        const html = await axios.get('http://localhost:3000/schedule/');
+        const html = await axios.get(url);
 
         const schedule = parseData(html.data);
 
