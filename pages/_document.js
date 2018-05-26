@@ -1,5 +1,6 @@
-import Document, { Main } from 'next/document';
+import Document from 'next/document';
 import Head from './_head';
+import Main from './_main';
 
 import css from 'raw-loader!../src/static/css/style.css';
 // Enforce that only the loader in the import statement is used by prefixing it with a !
@@ -10,7 +11,6 @@ class MyDocument extends Document {
         return (
             <html>
                 <Head>
-                    <meta charSet="utf-8" />
                     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                     <meta
                         name="viewport"
