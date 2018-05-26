@@ -8,7 +8,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "static": "next build && next export && node static.js"
+    "static": "next build && next export && node server-static.js"
   },
   "author": "Giulia Alfonsi",
   "license": "MIT",
