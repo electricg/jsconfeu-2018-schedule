@@ -59,6 +59,15 @@ a {
     z-index: 2;
 }
 
+.now {
+    border: 0 none;
+    cursor: pointer;
+    position: fixed;
+    right: 4px;
+    top: 4px;
+    z-index: 2;
+}
+
 .slot {
     display: flex;
     flex-wrap: wrap;

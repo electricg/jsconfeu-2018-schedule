@@ -7,6 +7,7 @@ const Schedule = ({ data }) => {
 
     return (
         <Fragment>
+            <input type="button" value="now" id="now" className="now" />
             {days.map((day, index) => (
                 <Day
                     key={day}

@@ -170,33 +170,37 @@
     const scrollToSlot = () => {
         // const date = '2018-06-03 13:56 GMT+0200';
         const date = new Date();
-        // scroll only if we don't have an hashtag in the url
-        if (!window.location.hash) {
-            // header height including border and padding
-            const header = document.querySelector('header');
-            const headerHeight = header ? header.offsetHeight : 0;
+        // header height including border and padding
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
 
-            const slot = getCurrentSlot(date);
+        const slot = getCurrentSlot(date);
 
-            if (slot) {
-                scrollToElement(slot);
+        if (slot) {
+            scrollToElement(slot);
 
-                // now account for fixed header
-                const scrolledY = window.scrollY;
+            // now account for fixed header
+            const scrolledY = window.scrollY;
 
-                // add 1px for rounding
-                if (scrolledY) {
-                    window.scroll(0, scrolledY - headerHeight - 1);
-                }
+            // add 1px for rounding
+            if (scrolledY) {
+                window.scroll(0, scrolledY - headerHeight - 1);
             }
         }
     };
 
-    window.addEventListener('load', () => {
+    /**
+     * To run when the page is loaded first time
+     */
+    const onPageLoad = () => {
         setTimeout(() => {
             scrollToSlot();
         }, 0);
-    });
+
+        document.querySelector('#now').addEventListener('click', scrollToSlot);
+    };
+
+    window.addEventListener('load', onPageLoad);
 })();
 
 //=== Service Workers
