@@ -36,7 +36,10 @@
         resetInput();
         selected.forEach(id => {
             const el = document.querySelector(`#${id}`);
-            el.click();
+
+            if (el) {
+                el.click();
+            }
         });
     };
 
@@ -163,7 +166,8 @@
         // scroll only if we don't have an hashtag in the url
         if (!window.location.hash) {
             // header height including border and padding
-            const headerHeight = document.querySelector('header').offsetHeight;
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 0;
 
             const slot = getCurrentSlot(date);
 
