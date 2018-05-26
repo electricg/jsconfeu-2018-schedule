@@ -21,4 +21,20 @@ const FavLabel = ({ id, show }) => {
     return <label htmlFor={`fav-${id}`} className="fav__label" />;
 };
 
-export { FavInput, FavLabel };
+const FavReset = ({ day, time, show }) => {
+    if (!show) {
+        return null;
+    }
+
+    return (
+        <input
+            type="button"
+            name="clear-fav"
+            className="fav__clear"
+            value="reset"
+            data-slot={`fav-${day}-${time}`}
+        />
+    );
+};
+
+export { FavInput, FavLabel, FavReset };
