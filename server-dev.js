@@ -1,5 +1,9 @@
 const express = require('express');
 const next = require('next');
+const fs = require('fs');
+
+const _package = require('./package.json');
+const { version } = _package;
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -12,7 +16,14 @@ app
 
         // custom handlers go here…
         server.get('/sw.js', (req, res) => {
-            res.sendFile(`${__dirname}/src/static/js/sw.js`);
+            // res.sendFile(`${__dirname}/src/static/js/sw.js`);
+            const content = fs.readFileSync(
+                `${__dirname}/src/static/js/sw.js`,
+                'utf8'
+            );
+            const js = content.replace('@VERSION@', version);
+            res.set('Content-Type', 'application/javascript');
+            res.send(js);
         });
 
         server.get('/schedule', (req, res) => {
