@@ -15,6 +15,11 @@ app
             res.sendFile(`${__dirname}/src/static/js/sw.js`);
         });
 
+        server.get('/schedule', (req, res) => {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(`${__dirname}/src/data/schedule.html`);
+        });
+
         server.get('*', (req, res) => handle(req, res));
 
         server.listen(3000, err => {

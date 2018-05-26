@@ -7,7 +7,8 @@ import Schedule from '../src/components/schedule';
 
 class PageIndex extends Component {
     static async getInitialProps() {
-        const html = await axios.get('https://2018.jsconf.eu/schedule/');
+        // const html = await axios.get('https://2018.jsconf.eu/schedule/');
+        const html = await axios.get('http://localhost:3000/schedule/');
 
         const schedule = parseData(html.data);
 
