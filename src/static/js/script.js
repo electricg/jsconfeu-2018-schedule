@@ -191,3 +191,8 @@
         }, 0);
     });
 })();
+
+//=== Service Workers
+// if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.register('/sw.js', { scope: '/' });
+// }
