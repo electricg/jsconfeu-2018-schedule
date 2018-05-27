@@ -1,6 +1,6 @@
 {
   "name": "jsconfeu-2018-schedule",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "JSConf EU 2018 schedule",
   "main": "index.js",
   "private": true,
