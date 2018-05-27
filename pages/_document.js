@@ -59,9 +59,7 @@ class MyDocument extends Document {
                         <p
                             id="service-worker-message"
                             className="service-worker__message"
-                        >
-                            there is a new update, please refresh
-                        </p>
+                        />
                     </div>
 
                     <script dangerouslySetInnerHTML={{ __html: js }} />
