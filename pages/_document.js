@@ -26,6 +26,19 @@ class MyDocument extends Document {
 
                     <link rel="manifest" href="/static/manifest.json" />
 
+                    <link
+                        href="/static/images/icons/icon-32x32.png"
+                        rel="icon"
+                        sizes="32x32"
+                        type="image/png"
+                    />
+                    <link
+                        href="/static/images/icons/icon-16x16.png"
+                        rel="icon"
+                        sizes="16x16"
+                        type="image/png"
+                    />
+
                     <title>JSConf EU 2018 Schedule</title>
 
                     <style dangerouslySetInnerHTML={{ __html: css }} />
