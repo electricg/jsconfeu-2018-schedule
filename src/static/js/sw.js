@@ -1,51 +1,41 @@
-/* global self, caches, fetch, URL */
 const version = '@VERSION@';
-const staticCacheName = `v${version}::static`;
+const cacheName = `v${version}::static`;
 
-const urls = ['/'];
+const fileList = ['/'];
 
 self.addEventListener('install', e => {
-    // once the SW is installed, go ahead and fetch the resources to make this
-    // work offline
+    // once the SW is installed, go ahead and fetch the resources
+    // to make this work offline
     e.waitUntil(
         caches
-            .open(staticCacheName)
+            .open(cacheName)
             .then(cache => {
-                return cache.addAll(urls).then(() => self.skipWaiting());
+                return cache.addAll(fileList).then(() => {
+                    self.skipWaiting();
+                });
             })
             .then(() => {
-                console.log(`Offline ${version} ready 🎉`);
+                console.log(`offline ${version} ready`);
             })
     );
 });
 
-function clearOldCaches() {
+// when the browser fetches a url, either response with
+// the cached object or go ahead and fetch the actual url
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request).then(res => res || fetch(event.request))
+    );
+});
+
+const clearOldCaches = () => {
     return caches.keys().then(keys => {
         return Promise.all(
-            keys
-                .filter(key => key !== staticCacheName)
-                .map(key => caches.delete(key))
+            keys.filter(key => key !== cacheName).map(key => caches.delete(key))
         );
     });
-}
+};
 
 self.addEventListener('activate', event => {
     event.waitUntil(clearOldCaches().then(() => self.clients.claim()));
-});
-
-self.addEventListener('fetch', event => {
-    // when the browser fetches a url, either response with the cached object
-    // or go ahead and fetch the actual url
-    event.respondWith(
-        caches.open(staticCacheName).then(cache => {
-            let url = event.request.url;
-            if (event.request.url.includes('?')) {
-                url = event.request.url.replace(/\?.*$/, '');
-                // console.log('need to strip query', event.request.url, url);
-            }
-            return cache.match(url).then(res => {
-                return res || fetch(event.request);
-            });
-        })
-    );
 });

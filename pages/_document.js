@@ -31,8 +31,39 @@ class MyDocument extends Document {
                     <style dangerouslySetInnerHTML={{ __html: css }} />
                 </Head>
                 <body>
-                    <span className="version">v{version}</span>
+                    <span className="version">
+                        v{version}
+                        <span className="airplane" id="airplane" />
+                    </span>
+
                     <Main />
+
+                    <div
+                        id="service-worker"
+                        className="service-worker__wrapper"
+                    >
+                        <button
+                            title="Dismiss"
+                            className="service-worker__dismiss"
+                            type="button"
+                            id="service-worker-dismiss"
+                        >
+                            <svg
+                                viewBox="0 0 32 32"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z" />
+                            </svg>
+                        </button>
+                        <p
+                            id="service-worker-message"
+                            className="service-worker__message"
+                        >
+                            there is a new update, please refresh
+                        </p>
+                    </div>
+
                     <script dangerouslySetInnerHTML={{ __html: js }} />
                 </body>
             </html>
