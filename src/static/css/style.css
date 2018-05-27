@@ -69,10 +69,14 @@ a {
 .now {
     border: 0 none;
     cursor: pointer;
-    position: fixed;
+    display: none;
     right: 4px;
     top: 4px;
     z-index: 2;
+}
+.🦄 .now {
+    display: block;
+    position: fixed;
 }
 
 .slot {
@@ -139,11 +143,15 @@ a {
 
 .fav__label {
     cursor: pointer;
+    display: none;
 }
 .fav__label:after {
     content: "♠️";
     font-family: initial;
     padding: 0 2px 0 4px;
+}
+.🦄 .fav__label {
+    display: inline;
 }
 
 .fav__clear {

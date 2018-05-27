@@ -41,6 +41,12 @@ class MyDocument extends Document {
 
                     <title>JSConf EU 2018 Schedule</title>
 
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `document.documentElement.className = '🦄';`
+                        }}
+                    />
+
                     <style dangerouslySetInnerHTML={{ __html: css }} />
                 </Head>
                 <body>
