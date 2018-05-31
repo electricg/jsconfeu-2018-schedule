@@ -8,6 +8,7 @@
     "dev": "node server-dev.js",
     "build": "next build",
     "start": "next start",
+    "beautify": "html-beautify jsconfeu-2018-schedule/index.html -r -T style -T script",
     "export": "rm -rf jsconfeu-2018-schedule && NODE_ENV=production next build && next export -o jsconfeu-2018-schedule && rm -rf jsconfeu-2018-schedule/_next && cp src/static/js/sw.js jsconfeu-2018-schedule/ && sed -i -e 's/@VERSION@/'$npm_package_version'/g' jsconfeu-2018-schedule/sw.js && rm -rf jsconfeu-2018-schedule/sw.js-e",
     "static": "npm run export && node server-static.js"
   },
@@ -26,6 +27,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
+    "js-beautify": "^1.7.5",
     "next": "^6.0.3",
     "raw-loader": "^0.5.1",
     "react": "^16.4.0",
