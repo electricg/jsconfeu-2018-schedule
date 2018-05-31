@@ -37,12 +37,17 @@ const parseData = html => {
             .trim();
 
         const $description = $el.find('.description');
-        const link = $description.find('a');
-        const href = link.attr('href');
-        link
-            .attr('target', '_blank')
-            .attr('rel', 'noopener')
-            .attr('href', `https://2018.jsconf.eu${href}`);
+        const links = $description.find('a');
+        links.each((i, el) => {
+            const link = $(el);
+            const href = link.attr('href');
+
+            link.attr('target', '_blank').attr('rel', 'noopener');
+
+            if (href.indexOf('http') !== 0) {
+                link.attr('href', `https://2018.jsconf.eu${href}`);
+            }
+        });
         const description = $description.html();
 
         const details = {
