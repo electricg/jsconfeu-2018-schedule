@@ -1,4 +1,4 @@
-import cheerio from 'cheerio';
+const cheerio = require('cheerio');
 
 const parseData = html => {
     const data = {};
@@ -72,4 +72,4 @@ const parseData = html => {
     return data;
 };
 
-export { parseData };
+module.exports = { parseData };
