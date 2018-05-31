@@ -33,6 +33,7 @@ const parseData = html => {
         const trackId = $el
             .attr('class')
             .replace('session', '')
+            .replace('time-row-item', '')
             .trim();
 
         const $description = $el.find('.description');
