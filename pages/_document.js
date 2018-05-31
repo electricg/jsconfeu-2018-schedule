@@ -27,6 +27,11 @@ class MyDocument extends Document {
                     <link rel="manifest" href="/static/manifest.json" />
 
                     <link
+                        rel="all-the-source"
+                        href="https://github.com/electricg/jsconfeu-2018-schedule"
+                    />
+
+                    <link
                         href="/static/images/icons/icon-32x32.png"
                         rel="icon"
                         sizes="32x32"

@@ -330,3 +330,11 @@
         }
     }
 })();
+
+//=== (╯°□°)╯︵ ┻━┻
+(function() {
+    console.log(
+        '🦄 GitHub repo: https://github.com/electricg/jsconfeu-2018-schedule'
+    );
+    console.log('😴 Made by https://twitter.com/electric_g');
+})();
