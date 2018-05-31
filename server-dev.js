@@ -1,6 +1,9 @@
+const axios = require('axios');
 const express = require('express');
-const next = require('next');
 const fs = require('fs');
+const next = require('next');
+
+const { parseData } = require('./src/utils');
 
 const _package = require('./package.json');
 const { version } = _package;
@@ -24,6 +27,14 @@ app
             const js = content.replace('@VERSION@', version);
             res.set('Content-Type', 'application/javascript');
             res.send(js);
+        });
+
+        server.get('/schedule.json', async (req, res) => {
+            const html = await axios.get('https://2018.jsconf.eu/schedule/');
+            const schedule = parseData(html.data);
+
+            res.set('Content-Type', 'application/json');
+            res.send(schedule);
         });
 
         server.get('/schedule', (req, res) => {
