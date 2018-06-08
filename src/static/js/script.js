@@ -67,35 +67,21 @@
         setSelected(selected);
 
         inputs.forEach(el => {
-            el.addEventListener('change', onRadioChange);
-        });
-
-        [...document.querySelectorAll('input[name=clear-fav]')].forEach(el => {
-            el.addEventListener('click', onClearClick);
+            el.addEventListener('click', onRadioChange);
         });
     };
 
     /**
      * To run when an input radio is clicked
      */
-    const onRadioChange = () => {
-        const selected = getSelected();
-        saveSelected(selected);
-    };
-
-    /**
-     * To run when clear button is clicked
-     */
-    const onClearClick = e => {
-        const el = e.target;
-        const name = el.getAttribute('data-slot');
-        const radios = [...document.querySelectorAll(`input[name='${name}']`)];
-
-        radios.forEach(radio => {
-            radio.checked = false;
+    const onRadioChange = e => {
+        const input = e.currentTarget;
+        e.preventDefault();
+        setTimeout(() => {
+            input.checked = !input.checked;
+            const selected = getSelected();
+            saveSelected(selected);
         });
-
-        onRadioChange();
     };
 
     window.addEventListener('load', onPageLoad);

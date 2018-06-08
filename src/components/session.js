@@ -7,11 +7,13 @@ const Session = ({ data, multiple }) => {
     return (
         <Fragment>
             <section id={id} className={`session ${trackId}`}>
-                <div className="track">
-                    {trackName} <FavLabel id={id} show={multiple} />
-                </div>
-                <h3>{what}</h3>
-                {who !== 'all' && <div className="speaker">{who}</div>}
+                <FavLabel id={id} show={multiple}>
+                    <span className="track">{trackName}</span>
+                    <span className="what" role="heading" aria-level="3">
+                        {what}
+                    </span>
+                    {who !== 'all' && <span className="speaker">{who}</span>}
+                </FavLabel>
                 {!!description && (
                     <details
                         className="description"

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 import Session from './session';
-import { FavInput, FavReset } from './fav';
+import { FavInput } from './fav';
 
 const Slot = ({ day, time, data }) => {
     const trackIds = Object.keys(data).sort();
@@ -25,8 +25,6 @@ const Slot = ({ day, time, data }) => {
             ))}
 
             <h2 className="slot__title">{time}</h2>
-
-            <FavReset day={day} time={time} show={multiple} />
 
             {trackIds.map(trackId => (
                 <Session

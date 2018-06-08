@@ -13,28 +13,16 @@ const FavInput = ({ id, day, time, show }) => {
     );
 };
 
-const FavLabel = ({ id, show }) => {
+const FavLabel = ({ id, show, children }) => {
     if (!show) {
-        return null;
-    }
-
-    return <label htmlFor={`fav-${id}`} className="fav__label" />;
-};
-
-const FavReset = ({ day, time, show }) => {
-    if (!show) {
-        return null;
+        return children;
     }
 
     return (
-        <input
-            type="button"
-            name="clear-fav"
-            className="fav__clear"
-            value="reset"
-            data-slot={`fav-${day}-${time}`}
-        />
+        <label htmlFor={`fav-${id}`} className="fav__label">
+            {children}
+        </label>
     );
 };
 
-export { FavInput, FavLabel, FavReset };
+export { FavInput, FavLabel };
