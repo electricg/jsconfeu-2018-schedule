@@ -180,6 +180,7 @@ a {
 header {
     background: var(--evalblack);
     padding: 4px 0;
+    position: -webkit-sticky; /* Safari */
     position: sticky;
     text-align: center;
     top: -1px;
